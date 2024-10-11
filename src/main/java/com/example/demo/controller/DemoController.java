@@ -1,16 +1,17 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.example.demo.model.domain.TestDB;
-
-
+import com.example.demo.model.service.TestService;
 
 @Controller
 public class DemoController {
+    @Autowired
+    TestService testService;
+
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("data", "반갑습니다.");
