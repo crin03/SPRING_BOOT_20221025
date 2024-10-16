@@ -61,4 +61,9 @@ public class DemoController {
         System.out.println("데이터 출력 디버그 : " + test + test2 + test3);
         return "testdb";
     }
+    
+    // @GetMapping("/article_list")
+    // public String article_list() {
+    //     return "article_list";
+    // }
 }
