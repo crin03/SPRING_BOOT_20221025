@@ -35,6 +35,15 @@ public class BlogService {
         return boardRepository.findById(id);
     }
 
+    // 7주차 연습문제
+    public void update(Long id, AddArticleRequest request) {
+        Optional<Board> optionalBoard = boardRepository.findById(id); // 단일 글 조회
+        optionalBoard.ifPresent(board -> { // 값이 있으면
+            board.update(request.getTitle(), request.getContent()); // 값을 수정
+            boardRepository.save(board); // Article 객체에 저장
+        });
+    }
+    
     // public Article save(AddArticleRequest request){
     //     // DTO가 없는 경우 이곳에 직접 구현 가능
     //     // public ResponseEntity<Article> addArticle(@RequestParam String title, @RequestParam String content) {
