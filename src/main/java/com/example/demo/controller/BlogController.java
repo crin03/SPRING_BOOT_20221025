@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 // import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -122,7 +122,9 @@ public class BlogController {
 
     @GetMapping("/board_list") // 새로운 게시판 링크 지정
     public String board_list(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String keyword) {
-        PageRequest pageable = PageRequest.of(page, 3); // 한 페이지의 게시글 수
+        int pageSize = 3; // 8주차 연습문제 : 한 페이지당 게시글 수
+
+        PageRequest pageable = PageRequest.of(page, pageSize); // 한 페이지의 게시글 수
         Page<Board> list; // Page를 반환
 
         if (keyword.isEmpty()) {
@@ -130,10 +132,22 @@ public class BlogController {
         } else {
             list = blogService.searchByKeyword(keyword, pageable); // 키워드로 검색
         }
+
+        // 8주차 연습문제 : 현재 페이지의 시작 글 번호 계산
+        int startNum = (page * pageSize) + 1; 
+
         model.addAttribute("boards", list); // 모델에 추가
         model.addAttribute("totalPages", list.getTotalPages()); // 페이지 크기
         model.addAttribute("currentPage", page); // 페이지 번호
         model.addAttribute("keyword", keyword); // 키워드
+        model.addAttribute("startNum", startNum); // 8주차 연습문제 : 시작 번호 추가
         return "board_list"; // .HTML 연결
+    }
+    
+    // 8주차 연습문제 삭제
+    @DeleteMapping("/api/board_delete/{id}")
+    public String deleteArticle(@PathVariable Long id) {
+        blogService.delete(id);
+        return "redirect:/board_list";
     }
 }

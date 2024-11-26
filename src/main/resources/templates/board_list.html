@@ -26,7 +26,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>글번호</th> <!-- 8주차 연습문제 수정 부분 -->
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성일</th>
@@ -35,8 +35,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="board : ${boards}">
-                        <td th:text="${board.id}"></td>
+                    <tr th:each="board, stat : ${boards}"> <!-- 8주차 연습문제 수정 부분 -->
+                        <td th:text="${startNum + stat.index}"></td> <!-- 8주차 연습문제 수정 부분 -->
                         <td>
                             <a th:href="@{/board_view/{id}(id=${board.id})}">
                                 <span th:text="${board.title}"></span>

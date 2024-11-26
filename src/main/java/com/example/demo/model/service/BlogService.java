@@ -80,4 +80,9 @@ public class BlogService {
     public Page<Board> searchByKeyword(String keyword, Pageable pageable) {
         return boardRepository.findByTitleContainingIgnoreCase(keyword, pageable);
     } // LIKE 검색 제공(대소문자 무시)
+
+    // 8주차 연습문제 삭제
+    public void delete(Long id) {
+        boardRepository.deleteById(id);
+    }
 }
