@@ -24,7 +24,8 @@
                     <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">글 저장하기</button>
-                <input type="hidden" id="user" name="user" value="GUEST">
+                <!-- <input type="hidden" id="user" name="user" value="GUEST"> -->
+                <input type="hidden" id="user" name="user" th:value="${email}">
                 <input type="hidden" id="newdate" name="newdate" value="오늘날짜">
                 <input type="hidden" id="count" name="count" value="0">
                 <input type="hidden" id="likec" name="likec" value="0">

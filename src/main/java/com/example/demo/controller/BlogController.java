@@ -78,10 +78,13 @@ public class BlogController {
     // }
 
     @GetMapping("/board_view/{id}") // 게시판 링크 지정
-    public String board_view(Model model, @PathVariable Long id) {
+    public String board_view(Model model, @PathVariable Long id, HttpSession session) {
         Optional<Board> list = blogService.findById(id); // 선택한 게시판 글
+        String currentUser = (String) session.getAttribute("email"); // 10주차 연습문제
+
         if (list.isPresent()) {
             model.addAttribute("boards", list.get()); // 존재할 경우 실제 Article 객체를 모델에 추가
+            model.addAttribute("currentUser", currentUser); // 현재 로그인 사용자
         } else {
             // 처리할 로직 추가 (예: 오류 페이지로 리다이렉트, 예외 처리 등)
             return "/error_page/article_error"; // 오류 처리 페이지로 연결
@@ -112,7 +115,13 @@ public class BlogController {
     }
 
     @GetMapping("/board_write")
-    public String board_write() {
+    public String board_write(HttpSession session, Model model) {
+        // 10주차 연습문자 사용자로 작성자 저장
+        String email = (String) session.getAttribute("email"); // 세션에서 로그인한 사용자 이메일 가져오기
+        if (email == null) {
+            email = "GUEST"; // 로그인하지 않은 경우
+        }
+        model.addAttribute("email", email); // 이메일을 Model에 추가
         return "board_write";
     }
 
