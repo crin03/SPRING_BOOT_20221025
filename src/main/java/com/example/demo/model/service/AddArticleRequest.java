@@ -1,6 +1,8 @@
 package com.example.demo.model.service;
 
-import lombok.*; // 어노테이션 자동 생성
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor; // 어노테이션 자동 생성
 import com.example.demo.model.domain.Board;
 
 @NoArgsConstructor // 기본 생성자 추가

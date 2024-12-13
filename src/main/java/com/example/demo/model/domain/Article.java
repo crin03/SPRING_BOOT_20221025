@@ -1,6 +1,9 @@
 package com.example.demo.model.domain;
 
-import lombok.*; // 어노테이션 자동 생성
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor; // 어노테이션 자동 생성
 import jakarta.persistence.*; // 기존 javax 후속 버전
 
 @Getter // setter는 없음(무분별한 변경 x)
