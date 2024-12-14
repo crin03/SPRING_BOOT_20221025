@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -121,6 +123,10 @@ public class BlogController {
         if (email == null) {
             email = "GUEST"; // 로그인하지 않은 경우
         }
+        // 추가: 오늘 날짜로 게시글 작성
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ofPattern("MM월 dd일")); // 형식 변경
+        model.addAttribute("newdate", formattedDate); // 현재 날짜를 모델에 추가
         model.addAttribute("email", email); // 이메일을 Model에 추가
         return "board_write";
     }
