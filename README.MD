@@ -7,7 +7,8 @@
 ## 2주차 - README 파일 추가, URL 맵핑과 컨트롤러 추가
 ## 2주차 - 연습문제 추가 완료
 - URL 맵핑과 컨트롤러 추가하기 : 헬로2페이지 맵핑, 5개 속성 변수 출력
-
+<img src = "https://github.com/user-attachments/assets/5e1f39bd-172f-46ff-8ebb-92ea70b882c8" width="30%">
+<img src = "https://github.com/user-attachments/assets/7bc31a07-6091-431e-96fa-8d38d214c762" width="30%">
 ## 3주차 - 템플릿 추가, 프로필 수정, 상세페이지 추가 / 3주차 연습문제 완료
 - 상세페이지 수정하기 : 되돌아가기 버튼 수정
 - 버튼을 클릭하면 현재 창을 닫고, 창을 닫을지 물어본다.
